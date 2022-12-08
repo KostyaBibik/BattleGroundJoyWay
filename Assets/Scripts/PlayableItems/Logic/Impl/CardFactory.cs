@@ -1,4 +1,4 @@
-﻿using Db;
+﻿using Db.Impl;
 using UnityEngine;
 using Zenject;
 
@@ -7,20 +7,24 @@ namespace PlayableItems.Logic.Impl
     public class CardFactory : ICardFactory
     {
         private readonly DiContainer _diContainer;
-        private readonly CardPrefabs _cardPrefabs;
+        private readonly GameObject _defaultCard;
         
         public CardFactory(
             DiContainer diContainer,
-            CardPrefabs cardPrefabs
+            CardSettings cardSettings
             )
         {
             _diContainer = diContainer;
-            _cardPrefabs = cardPrefabs;
+            _defaultCard = cardSettings.DefaultCard;
         } 
     
-        public GameObject CreateCard()
+        public CardView CreateCard(CardVo cardVo)
         {
-            return _diContainer.InstantiatePrefab(_cardPrefabs.CardView);
+            var cardView = _diContainer.InstantiatePrefab(_defaultCard).GetComponent<CardView>();
+            cardView.SetHealth(cardVo.health);
+            cardView.SetName(cardVo.name);
+            
+            return cardView;
         }
     }
 }

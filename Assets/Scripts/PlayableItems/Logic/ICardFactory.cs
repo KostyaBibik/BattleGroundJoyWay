@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using Db.Impl;
 
 namespace PlayableItems.Logic
 {
     public interface ICardFactory
     {
-        GameObject CreateCard();
+        CardView CreateCard(CardVo cardVo);
     }
 }

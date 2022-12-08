@@ -1,4 +1,5 @@
 ﻿using System;
+using Db.Impl;
 using PlayableItems.Logic;
 using Signals;
 using UI;
@@ -12,23 +13,26 @@ namespace Systems
         private readonly ICardFactory _cardFactory;
         private readonly SignalBus _signalBus;
         private readonly CanvasView _mainCanvasView;
+        private readonly CardSettings _cardSettings;
         
         public CardInitializeSystem(
             ICardFactory cardFactory,
             SignalBus signalBus,
-            CanvasView canvasView
+            CanvasView canvasView,
+            CardSettings cardSettings
             )
         {
             _cardFactory = cardFactory;
             _signalBus = signalBus;
             _mainCanvasView = canvasView;
+            _cardSettings = cardSettings;
         }
 
         private void InitializeCards(InitializeStartCardSignal initializeStartCardSignal)
         {
-            for (var i = 0; i < 5; i++)
+            foreach (var cardVo in _cardSettings.AllCards)
             {
-                var card = _cardFactory.CreateCard();
+                var card = _cardFactory.CreateCard(cardVo);
                 card.transform.SetParent(_mainCanvasView.PlayerPanelView.transform, false);
             }
         }
