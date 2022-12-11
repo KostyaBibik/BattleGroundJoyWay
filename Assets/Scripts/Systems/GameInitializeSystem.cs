@@ -15,6 +15,7 @@ namespace Systems
         public void Initialize()
         {
             _signalBus.Fire(new InitializeStartCardSignal());
+            _signalBus.Fire(new StartGameSignal());
         }
     }
 }

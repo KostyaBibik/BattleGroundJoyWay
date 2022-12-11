@@ -12,8 +12,7 @@ namespace UI
 
         public void OnDrop(PointerEventData eventData)
         {
-            Debug.Log("onDrop PlayerPanel");
-            _movingSystem.OnDrop(eventData, this);
+           // _movingSystem.OnDrop(eventData, this);
         }
     }
 }

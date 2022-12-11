@@ -1,6 +1,5 @@
 using Systems;
-using PlayableItems;
-using PlayableItems.Logic;
+using Game;
 using PlayableItems.Logic.Impl;
 using Signals;
 using UI;
@@ -11,35 +10,47 @@ namespace Installers
 {
     public class GameInstaller : MonoInstaller
     {
-        [SerializeField] private Camera _mainCamera;
-        [SerializeField] private CanvasView _canvasView;
+        [SerializeField] private Camera mainCamera;
+        [SerializeField] private CanvasView canvasView;
+        [SerializeField] private IndicatorView indicatorView;
         
         public override void InstallBindings()
         {
             SignalBusInstaller.Install(Container);
             Container.DeclareSignal<InitializeStartCardSignal>();
+            Container.DeclareSignal<EndMotionSignal>();
+            Container.DeclareSignal<StartGameSignal>();
             
-            Container.Bind<Camera>().FromInstance(_mainCamera).AsSingle();
-
+            Container.Bind<Camera>().FromInstance(mainCamera).AsSingle();
+            Container.BindInterfacesAndSelfTo<IndicatorView>().FromInstance(indicatorView).AsSingle().NonLazy();
+            
             BindUiInstances();
             
             Container.Bind<CardMovingSystem>().AsSingle().NonLazy();
 
+            Container.Bind<CardService>().AsSingle().NonLazy();
+            
             Container
                 .BindInterfacesAndSelfTo<CardFactory>()
                 .AsSingle()
                 .NonLazy();
 
+
             Container.BindInterfacesTo<CardInitializeSystem>().AsSingle().NonLazy();
 
+            Container.BindInterfacesAndSelfTo<IdentifyMotionSystem>().AsSingle().NonLazy();
+            
             Container.BindInterfacesTo<GameInitializeSystem>().AsSingle().NonLazy();
+
+            
         }
 
         private void BindUiInstances()
         {
-            Container.Bind<CanvasView>().FromInstance(_canvasView).AsSingle();
-            Container.Bind<PlayerPanelView>().FromInstance(_canvasView.PlayerPanelView).AsSingle();
-            Container.Bind<EnemyPanelView>().FromInstance(_canvasView.EnemyPanelView).AsSingle();
+            Container.Bind<CanvasView>().FromInstance(canvasView).AsSingle();
+            Container.Bind<PlayerPanelView>().FromInstance(canvasView.PlayerPanelView).AsSingle();
+            Container.Bind<EnemyPanelView>().FromInstance(canvasView.EnemyPanelView).AsSingle();
         }
+
     }
 }

@@ -14,13 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCard: {fileID: 5355648848684806783, guid: ed9e0dd94eb7bdb4fb09fc9ef4bc6062, type: 3}
   cards:
-  - health: 50
+  - Team: 1
+    health: 50
+    damage: 0
     name: Card1
-  - health: 60
+  - Team: 1
+    health: 60
+    damage: 0
     name: Card2
-  - health: 70
+  - Team: 0
+    health: 70
+    damage: 0
     name: Card3
-  - health: 80
+  - Team: 0
+    health: 80
+    damage: 0
     name: Card4
-  - health: 90
+  - Team: 0
+    health: 90
+    damage: 0
     name: Card5

@@ -6,6 +6,6 @@ namespace Db
     public interface ICardSettings
     {
         List<CardVo> AllCards { get; }
-        CardVo GetPlant(string name);
+        CardVo GetCard(string name);
     }
 }

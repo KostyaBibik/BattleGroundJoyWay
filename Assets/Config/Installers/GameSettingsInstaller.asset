@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efa94aa97334e328a93fcfd317eae33, type: 3}
   m_Name: GameSettingsInstaller
   m_EditorClassIdentifier: 
-  cardPrefabs: {fileID: 11400000, guid: 978c4d26af55cd941a408d22bea96323, type: 2}
+  prefabsBase: {fileID: 0}
   cardSettings: {fileID: 11400000, guid: 851ce9e53cc5c63418cc05e1cd6c7a6b, type: 2}
+  actionSettings: {fileID: 11400000, guid: e310b434090eecf46aed003784094183, type: 2}

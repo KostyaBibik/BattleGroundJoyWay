@@ -12,7 +12,7 @@ namespace UI
         
         public void OnDrop(PointerEventData eventData)
         {
-            _movingSystem.OnDrop(eventData, this);
+           // _movingSystem.OnDrop(eventData, this);
         }
     }
 }

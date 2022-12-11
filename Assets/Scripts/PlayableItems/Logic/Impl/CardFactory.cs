@@ -8,7 +8,8 @@ namespace PlayableItems.Logic.Impl
     {
         private readonly DiContainer _diContainer;
         private readonly GameObject _defaultCard;
-        
+        private readonly SignalBus _signalBus;
+
         public CardFactory(
             DiContainer diContainer,
             CardSettings cardSettings
@@ -20,9 +21,7 @@ namespace PlayableItems.Logic.Impl
     
         public CardView CreateCard(CardVo cardVo)
         {
-            var cardView = _diContainer.InstantiatePrefab(_defaultCard).GetComponent<CardView>();
-            cardView.SetHealth(cardVo.health);
-            cardView.SetName(cardVo.name);
+            var cardView = _diContainer.InstantiatePrefabForComponent<CardView>(_defaultCard).Initialize(cardVo);
             
             return cardView;
         }

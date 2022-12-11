@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using PlayableItems;
 using UnityEngine;
 
 namespace Db.Impl
@@ -14,7 +13,7 @@ namespace Db.Impl
         
         public GameObject DefaultCard => defaultCard;
         public List<CardVo> AllCards => cards;
-        public CardVo GetPlant(string cardName)
+        public CardVo GetCard(string cardName)
         {
             foreach (var cardVo in cards)
             {
