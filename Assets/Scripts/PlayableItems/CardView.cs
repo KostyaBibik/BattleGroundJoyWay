@@ -7,7 +7,6 @@ using Db.Enums;
 using Db.Impl;
 using Game;
 using Game.Components;
-using Game.Impl;
 using Signals;
 using TMPro;
 using UnityEngine;
@@ -67,11 +66,11 @@ namespace PlayableItems
 
         public CardView Initialize(CardVo cardVo)
         {
-            _cardInfo.damage = cardVo.damage;
             _cardInfo.team = cardVo.Team;
             
-            _healthComponent = new HealthComponent(health, temporaryHealthView);
+            _healthComponent = new HealthComponent(health, temporaryHealthView, this);
             _healthComponent.SetHealth(cardVo.health);
+            _healthComponent.onDie += delegate { Destroy(); };
             SetName(cardVo.name);
             
             return this;
@@ -80,8 +79,6 @@ namespace PlayableItems
         private void Start()
         {
             _signalBus.Subscribe<EndMotionSignal>(OnCatchEndMotionSignal);
-            
-            //ActionState = new DefenceActionState().Initialize(this, _actionSettings.GetAction(EActionType.Defend));
         }
 
         public void SetAction(EActionType actionType, IActionState actionState)
@@ -169,6 +166,11 @@ namespace PlayableItems
         private void OnCatchEndMotionSignal(EndMotionSignal endMotionSignal)
         {
             onEndMove?.Invoke();
+        }
+
+        private void Destroy()
+        {
+            Destroy(gameObject);
         }
     }
 }

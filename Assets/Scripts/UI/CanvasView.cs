@@ -1,4 +1,3 @@
-using System;
 using Signals;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,15 +7,15 @@ namespace UI
 {
     public class CanvasView : MonoBehaviour
     {
-        [SerializeField] private PlayerPanelView playerPanelView;
-        [SerializeField] private EnemyPanelView enemyPanelView;
+        [SerializeField] private PlayerCardHolder playerCardHolder;
+        [SerializeField] private EnemyCardHolder enemyCardHolder;
         [SerializeField] private Button endTurn;
         [SerializeField] private Canvas canvas;
         
         [Inject] private SignalBus _signalBus;
         
-        public PlayerPanelView PlayerPanelView => playerPanelView;
-        public EnemyPanelView EnemyPanelView => enemyPanelView;
+        public PlayerCardHolder PlayerCardHolder => playerCardHolder;
+        public EnemyCardHolder EnemyCardHolder => enemyCardHolder;
         public float PlaneDistance => canvas.planeDistance;
 
         private void Start()

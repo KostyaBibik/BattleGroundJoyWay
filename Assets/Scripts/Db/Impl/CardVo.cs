@@ -11,7 +11,6 @@ namespace Db.Impl
         
         [Space]
         public int health;
-        public int damage;
         public string name;
     }
 }

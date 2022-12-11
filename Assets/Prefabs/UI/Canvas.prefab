@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 7114403357788284098}
   - component: {fileID: 7114403357788284099}
   - component: {fileID: 7114403357788284100}
-  - component: {fileID: 5679093427240195311}
+  - component: {fileID: 1797211093523306790}
   m_Layer: 5
   m_Name: EnemyPanel
   m_TagString: Untagged
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &5679093427240195311
+--- !u!114 &1797211093523306790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7114403357788284102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8190fa952201462fb13fe31ed474e031, type: 3}
+  m_Script: {fileID: 11500000, guid: 52c36ab7cb96423793046db6c400924d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7114403358666471655
@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e941e1dce876bf04d9e235d305e8898a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPanelView: {fileID: 7114403359147847536}
-  enemyPanelView: {fileID: 5679093427240195311}
+  playerCardHolder: {fileID: 7114403359147847536}
+  enemyCardHolder: {fileID: 1797211093523306790}
   endTurn: {fileID: 944370310020343019}
   canvas: {fileID: 7114403358666471652}
 --- !u!1 &7114403358814995741
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7114403359147847537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c772c0e4f2debf247846c966344237dc, type: 3}
+  m_Script: {fileID: 11500000, guid: a8908b5c534a4f3da328633689a8d593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8188151814041936930
@@ -586,7 +586,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: End turn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

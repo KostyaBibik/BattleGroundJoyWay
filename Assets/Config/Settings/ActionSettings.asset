@@ -14,19 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackActionVo:
     actionType: 0
+    targetAction: 2
     actionSprite: {fileID: 21300000, guid: aac247c01512b3045901254d2920fbf3, type: 3}
     damageValue: 3
   healActionVo:
     actionType: 1
+    targetAction: 0
     actionSprite: {fileID: 21300000, guid: b5536835b7aaf7f40bb6cede1576a1d8, type: 3}
     healValue: 5
   poisonActionVo:
     actionType: 2
+    targetAction: 2
     actionSprite: {fileID: 21300000, guid: 42b517914c1968945a56250b510853dc, type: 3}
     damagePerMotion: 1
     turnsToRemovePoison: 1
   defenceActionVo:
     actionType: 3
+    targetAction: 0
     actionSprite: {fileID: 21300000, guid: b7328485e8bb43a40b7f236d10539670, type: 3}
     temporaryHealthValue: 5
     stepsToRefreshTemporaryHealth: 3

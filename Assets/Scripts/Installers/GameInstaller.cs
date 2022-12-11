@@ -1,5 +1,6 @@
 using Systems;
 using Game;
+using Game.Ai;
 using PlayableItems.Logic.Impl;
 using Signals;
 using UI;
@@ -35,22 +36,20 @@ namespace Installers
                 .AsSingle()
                 .NonLazy();
 
+            Container.BindInterfacesAndSelfTo<AiMovingSystem>().AsSingle().NonLazy();
 
             Container.BindInterfacesTo<CardInitializeSystem>().AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<IdentifyMotionSystem>().AsSingle().NonLazy();
             
             Container.BindInterfacesTo<GameInitializeSystem>().AsSingle().NonLazy();
-
-            
         }
 
         private void BindUiInstances()
         {
             Container.Bind<CanvasView>().FromInstance(canvasView).AsSingle();
-            Container.Bind<PlayerPanelView>().FromInstance(canvasView.PlayerPanelView).AsSingle();
-            Container.Bind<EnemyPanelView>().FromInstance(canvasView.EnemyPanelView).AsSingle();
+            Container.Bind<PlayerCardHolder>().FromInstance(canvasView.PlayerCardHolder).AsSingle();
+            Container.Bind<EnemyCardHolder>().FromInstance(canvasView.EnemyCardHolder).AsSingle();
         }
-
     }
 }

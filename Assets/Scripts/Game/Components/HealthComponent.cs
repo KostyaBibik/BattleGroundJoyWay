@@ -1,4 +1,5 @@
 ﻿using System;
+using PlayableItems;
 using TMPro;
 using UnityEngine;
 
@@ -8,22 +9,24 @@ namespace Game.Components
     {
         private int _currentHealth;
         private int _temporaryHealth;
-        
-        
+
         private readonly TMP_Text _healthView;
         private readonly TMP_Text _temporaryHealthLabel;
         private readonly GameObject _temporaryIcon;
+        private readonly CardView _cardView;
         
-        public event Action onDie;
+        public event Action<CardView> onDie;
 
         public HealthComponent(
             TMP_Text healthView,
-            TemporaryHealthView temporaryHealthView
+            TemporaryHealthView temporaryHealthView,
+            CardView cardView
             )
         {
             _healthView = healthView;
             _temporaryHealthLabel = temporaryHealthView.TemporaryLabel;
             _temporaryIcon = temporaryHealthView.TemporaryView;
+            _cardView = cardView;
             
             CheckTemporaryHealthActive();
         }
@@ -60,7 +63,7 @@ namespace Game.Components
             
             if (_currentHealth <= 0)
             {
-                onDie?.Invoke();
+                onDie?.Invoke(_cardView);
             }
         }
         

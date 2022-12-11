@@ -47,10 +47,10 @@ namespace Systems
                 switch (cardVo.Team)
                 {
                     case ETeam.Enemy:
-                        parentTransform = _mainCanvasView.EnemyPanelView.transform;
+                        parentTransform = _mainCanvasView.EnemyCardHolder.transform;
                         break;
                     case ETeam.Player:
-                        parentTransform = _mainCanvasView.PlayerPanelView.transform;
+                        parentTransform = _mainCanvasView.PlayerCardHolder.transform;
                         break;
                 }
                 
@@ -72,6 +72,11 @@ namespace Systems
                 
                 playerCard.SetAction(action.Item1, action.Item2);
                 listActions.Remove(action);
+            }
+            
+            foreach (var aiCard in _cardService.GetCardsByTeam(ETeam.Enemy))
+            {
+                aiCard.SetAction(EActionType.Attack, new AttackActionState());
             }
         }
 
