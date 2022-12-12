@@ -261,10 +261,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LosePanel
       objectReference: {fileID: 0}
-    - target: {fileID: 4863031167997339721, guid: 5cc53e911251d974eb78fa527e6b3b90, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cc53e911251d974eb78fa527e6b3b90, type: 3}
 --- !u!224 &313666188431679859 stripped
