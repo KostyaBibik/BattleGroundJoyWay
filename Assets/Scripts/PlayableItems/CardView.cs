@@ -27,13 +27,14 @@ namespace PlayableItems
     {
         public CanvasGroup canvasGroup;
         
-        [SerializeField] private TMP_Text health;
-        [SerializeField] private TMP_Text name;
+        [SerializeField] private TMP_Text healthLabel;
+        [SerializeField] private TMP_Text nameLabel;
         [SerializeField] private Outline outline;
         [SerializeField] private Color selectedColor;
         [SerializeField] private Color onPointerEnterColor;
         [SerializeField] private TemporaryHealthView temporaryHealthView;
         [SerializeField] private Image actionIcon;
+        [SerializeField] private GameObject poisonedImage;
         
         public CanvasGroup CanvasGroup => canvasGroup;
         public HealthComponent HealthComponent => _healthComponent;
@@ -68,7 +69,7 @@ namespace PlayableItems
         {
             _cardInfo.team = cardVo.Team;
             
-            _healthComponent = new HealthComponent(health, temporaryHealthView, this);
+            _healthComponent = new HealthComponent(healthLabel, temporaryHealthView, poisonedImage,this);
             _healthComponent.SetHealth(cardVo.health);
             _healthComponent.onDie += delegate { Destroy(); };
             SetName(cardVo.name);
@@ -89,7 +90,7 @@ namespace PlayableItems
         public void SetName(string value)
         {
             _cardInfo.name = value;
-            name.text = value;
+            nameLabel.text = value;
         }
 
         public ETeam GetTeam()

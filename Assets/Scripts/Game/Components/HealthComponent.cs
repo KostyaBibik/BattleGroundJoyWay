@@ -7,25 +7,31 @@ namespace Game.Components
 {
     public class HealthComponent
     {
-        private int _currentHealth;
-        private int _temporaryHealth;
-
         private readonly TMP_Text _healthView;
         private readonly TMP_Text _temporaryHealthLabel;
         private readonly GameObject _temporaryIcon;
+        private readonly GameObject _poisonIcon;
         private readonly CardView _cardView;
+        
+        private int _currentHealth;
+        private int _temporaryHealth;
+        private bool _isPoisoned;
+
+        public bool IsPoisoned => _isPoisoned;
         
         public event Action<CardView> onDie;
 
         public HealthComponent(
             TMP_Text healthView,
             TemporaryHealthView temporaryHealthView,
+            GameObject poisonIcon,
             CardView cardView
             )
         {
             _healthView = healthView;
             _temporaryHealthLabel = temporaryHealthView.TemporaryLabel;
             _temporaryIcon = temporaryHealthView.TemporaryView;
+            _poisonIcon = poisonIcon;
             _cardView = cardView;
             
             CheckTemporaryHealthActive();
@@ -84,6 +90,12 @@ namespace Game.Components
         private void CheckTemporaryHealthActive()
         {
             _temporaryIcon.SetActive(_temporaryHealth > 0);
+        }
+
+        public void SwitchPoisonEffect(bool flag)
+        {
+            _isPoisoned = flag;
+            _poisonIcon.SetActive(flag);
         }
     }
 }

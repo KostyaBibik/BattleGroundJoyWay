@@ -49,7 +49,6 @@ namespace Game.Ai
             _aiTurnMove = !_aiTurnMove;
             if (!_aiTurnMove)
             {
-                Debug.Log("!_aiTurnMove");
                 return;
             }
 

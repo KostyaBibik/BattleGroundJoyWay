@@ -29,6 +29,7 @@ namespace Game.Impl
         public void OnEndDrag(CardView targetCard)
         {
             targetCard.HealthComponent.AddHealth(_healValue);
+            targetCard.HealthComponent.SwitchPoisonEffect(false);
         }
     }
 }

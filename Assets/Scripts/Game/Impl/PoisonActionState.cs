@@ -36,6 +36,7 @@ namespace Game.Impl
         public void OnEndDrag(CardView targetCard)
         { 
             targetCard.HealthComponent.ApplyDamage(_periodicDamage);
+            targetCard.HealthComponent.SwitchPoisonEffect(true);
             poisonedCards.Add(new Tuple<CardView, int>(targetCard, _turnsToRemovePoison * 2));
         }
 
@@ -43,13 +44,18 @@ namespace Game.Impl
         {
             for (var i = 0; i < poisonedCards.Count; i++)
             {
-                if (poisonedCards[i].Item2 - 1 > 0)
+                if (poisonedCards[i].Item2 - 1 > 0 && poisonedCards[i].Item1.HealthComponent.IsPoisoned)
                 {
                     poisonedCards[i] = new Tuple<CardView, int>(poisonedCards[i].Item1, poisonedCards[i].Item2 - 1);   
                 }
                 else
                 {
-                    poisonedCards[i].Item1.HealthComponent.ApplyDamage(_periodicDamage);
+                    if(poisonedCards[i].Item1.HealthComponent.IsPoisoned)
+                    {
+                        poisonedCards[i].Item1.HealthComponent.ApplyDamage(_periodicDamage);
+                        poisonedCards[i].Item1.HealthComponent.SwitchPoisonEffect(false);
+                    }
+
                     poisonedCards.Remove(poisonedCards[i]);
                     i--;
                 }

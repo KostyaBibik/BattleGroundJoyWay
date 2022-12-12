@@ -172,6 +172,7 @@ RectTransform:
   - {fileID: 6540989016001002580}
   - {fileID: 3902599250470165844}
   - {fileID: 4394912977059907006}
+  - {fileID: 7119057371705295217}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -231,8 +232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: -3478538934432026369}
-  health: {fileID: 4305922126627746924}
-  name: {fileID: 3286661295012922237}
+  healthLabel: {fileID: 4305922126627746924}
+  nameLabel: {fileID: 3286661295012922237}
   outline: {fileID: 3672025447020836509}
   selectedColor: {r: 0.011764706, g: 0.7411765, b: 1, a: 0.12941177}
   onPointerEnterColor: {r: 0.735849, g: 0.09996435, b: 0.09996435, a: 0.12941177}
@@ -240,6 +241,7 @@ MonoBehaviour:
     temporaryView: {fileID: 9044966874594649624}
     temporaryLabel: {fileID: 7834474431885634981}
   actionIcon: {fileID: 1310049080380135868}
+  poisonedImage: {fileID: 8843731173075577166}
 --- !u!225 &-3478538934432026369
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -279,7 +281,7 @@ GameObject:
   - component: {fileID: 2055571203237215611}
   - component: {fileID: 4305922126627746924}
   m_Layer: 5
-  m_Name: HealthTxt
+  m_Name: HealthLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -414,7 +416,7 @@ GameObject:
   - component: {fileID: 6755224311554932131}
   - component: {fileID: 3286661295012922237}
   m_Layer: 5
-  m_Name: NameTxt
+  m_Name: NameLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,6 +606,82 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: aac247c01512b3045901254d2920fbf3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8843731173075577166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7119057371705295217}
+  - component: {fileID: 3707478175125961080}
+  - component: {fileID: 7337532410691020376}
+  m_Layer: 5
+  m_Name: PoisonedEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &7119057371705295217
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843731173075577166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5108303434664277309}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.35}
+  m_AnchorMax: {x: 0.23500001, y: 0.67333335}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3707478175125961080
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843731173075577166}
+  m_CullTransparentMesh: 1
+--- !u!114 &7337532410691020376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843731173075577166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.40256318, g: 0.8301887, b: 0.56671196, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d1d0d96e3d7759f42b2e02b2d06062c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

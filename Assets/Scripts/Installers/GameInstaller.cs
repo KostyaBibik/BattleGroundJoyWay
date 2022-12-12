@@ -3,7 +3,6 @@ using Game;
 using Game.Ai;
 using PlayableItems.Logic.Impl;
 using Signals;
-using UI;
 using UnityEngine;
 using Zenject;
 
@@ -12,20 +11,15 @@ namespace Installers
     public class GameInstaller : MonoInstaller
     {
         [SerializeField] private Camera mainCamera;
-        [SerializeField] private CanvasView canvasView;
         [SerializeField] private IndicatorView indicatorView;
         
         public override void InstallBindings()
         {
-            SignalBusInstaller.Install(Container);
-            Container.DeclareSignal<InitializeStartCardSignal>();
-            Container.DeclareSignal<EndMotionSignal>();
-            Container.DeclareSignal<StartGameSignal>();
-            
+            InstallSignals();
+
+            Container.BindInterfacesAndSelfTo<InputHotkeysSystem>().AsSingle().NonLazy();
             Container.Bind<Camera>().FromInstance(mainCamera).AsSingle();
             Container.BindInterfacesAndSelfTo<IndicatorView>().FromInstance(indicatorView).AsSingle().NonLazy();
-            
-            BindUiInstances();
             
             Container.Bind<CardMovingSystem>().AsSingle().NonLazy();
 
@@ -45,11 +39,14 @@ namespace Installers
             Container.BindInterfacesTo<GameInitializeSystem>().AsSingle().NonLazy();
         }
 
-        private void BindUiInstances()
+        private void InstallSignals()
         {
-            Container.Bind<CanvasView>().FromInstance(canvasView).AsSingle();
-            Container.Bind<PlayerCardHolder>().FromInstance(canvasView.PlayerCardHolder).AsSingle();
-            Container.Bind<EnemyCardHolder>().FromInstance(canvasView.EnemyCardHolder).AsSingle();
+            SignalBusInstaller.Install(Container);
+            Container.DeclareSignal<InitializeStartCardSignal>();
+            Container.DeclareSignal<EndMotionSignal>();
+            Container.DeclareSignal<StartGameSignal>();
+            Container.DeclareSignal<WinSignal>();
+            Container.DeclareSignal<LoseSignal>();
         }
     }
 }
